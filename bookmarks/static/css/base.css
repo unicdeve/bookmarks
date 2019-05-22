@@ -102,7 +102,7 @@ label {
 }
 input, textarea {
     clear:both;
-    float:left;
+    /* float:left; */
     margin:0 0 10px;
     background:#efefef;
     border:0;
