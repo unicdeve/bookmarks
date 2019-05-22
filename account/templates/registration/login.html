@@ -18,7 +18,8 @@
               Your username and password didn't match.
               Please try again.
               {% else %}
-              Welcome, enter your credentials to login.
+              <p>Welcome, enter your credentials to login. If you don't have an account <a
+                href="{% url 'register' %}">register here</a></p>
             {% endif %}
             <form action="{% url 'login' %}" method="post">
               {% bootstrap_form form %}
