@@ -6,7 +6,7 @@ SECRET_KEY = '2l&rh3b+hb^#bt4vt_)e6**7di&br+bg#kbwhwjf59v8%!00v0'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
@@ -16,7 +16,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "bootstrap4"
+    "bootstrap4",
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -106,4 +107,18 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 AUTHENTICATION_BACKENDS = [
   'django.contrib.auth.backends.ModelBackend',
   'account.authentication.EmailAuthBackend',
+  'social_core.backends.facebook.FacebookOAuth2',
+  'social_core.backends.twitter.TwitterOAuth',
+  'social_core.backends.google.GoogleOAuth2',
 ]
+
+
+# Social Login
+SOCIAL_AUTH_FACEBOOK_KEY = 'XXX'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'XXX'
+
+SOCIAL_AUTH_TWITTER_KEY = 'XXX'
+SOCIAL_AUTH_TWITTER_SECRET = 'XXX'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'XXX'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XXX'
