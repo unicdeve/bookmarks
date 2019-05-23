@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "bootstrap4",
     'social_django',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [
