@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block title %}
+  Bookmark an image
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-9 mx-auto mt-4">
+      <h1>Bookmark an image</h1>
+    
+      <img src="{{ request.GET.url }}" class="image-preview" />
+      <form action="." method="post">
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        <p><input type="submit" class="btn btn-success" value="Bookmark it!"></p>
+      </form>
+    </div>
+  </div>
+{% endblock %}
