@@ -4,7 +4,8 @@ from django.contrib import messages
 from .forms import ImageCreateForm
 from .models import Image
 
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.http import require_POST
 from common.decorators import ajax_required
 
@@ -55,4 +56,24 @@ def image_like(request):
     except:
       pass
   return JsonResponse({'status': 'ko'})
+
+
+@login_required
+def image_list(request):
+  images = Image.objects.all()
+  paginator = Paginator(images, 8)
+  page = request.GET.get('page')
+  try:
+    images = paginator.page(page)
+  except PageNotAnInteger:
+    images = paginator.page(1) # display first page if not an integer
+  except EmptyPage:
+    if request.is_ajax():
+      # if the request is AJAX and the page is out of range
+      return HttpResponse('') # return an empty page
+    images = paginator.page(paginator.num_pages) # deliver the last page of result if request out of range
+  if request.is_ajax():
+    return render(request, 'images/image/list_ajax.html', {'section': 'images', 'images': images})
+  return render(request, 'images/image/list.html', {'section': 'images', 'images': images})
+      
 

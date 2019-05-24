@@ -6,7 +6,7 @@ SECRET_KEY = '2l&rh3b+hb^#bt4vt_)e6**7di&br+bg#kbwhwjf59v8%!00v0'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1', '74002d05.ngrok.io']
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1', 'dc1826c4.ngrok.io']
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
